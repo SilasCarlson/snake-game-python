@@ -7,6 +7,7 @@ class BodyPart:
         self._board_position = pygame.Vector2(board_x, board_y)
         self._position = pygame.Vector2(x, y)
         self._rectangle = pygame.Rect(x, y, width, height)
+        self._color = "red"
 
     def get_board_position(self):
         return self._board_position
@@ -22,15 +23,22 @@ class BodyPart:
         self._rectangle.x = position.x
         self._rectangle.y = position.y
 
+    def set_color(self, color):
+        self._color = color
+
     def draw(self, screen):
-        pygame.draw.rect(screen, "red", self._rectangle)
+        pygame.draw.rect(screen, self._color, self._rectangle)
 
 class Player:
-    def __init__(self, board_x, board_y, x, y):
+    def __init__(self, board_x, board_y, x, y, width, height):
         # Make the body parts
-        self._head = BodyPart(board_x, board_y, x, y, 16, 16)
-        self._tail = BodyPart(board_x + 1, board_y, x + 16, y, 16, 16)
+        self._width = width
+        self._height = height
+        self._head = BodyPart(board_x, board_y, x, y, self._width, self._height)
+        self._tail = BodyPart(board_x + 1, board_y, x + 16, y, self._width, self._height)
         self._body_parts = [self._head, self._tail]
+
+        self._head.set_color("orange")
 
     def draw(self, screen):
         for body_part in self._body_parts:

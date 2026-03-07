@@ -69,3 +69,6 @@ class Player:
 
     def get_board_position(self):
         return self._head.get_board_position()
+
+    def get_body_parts(self):
+        return self._body_parts

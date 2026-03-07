@@ -1,30 +1,25 @@
 # Overview
 
-{Important!  Do not say in this section that this is college assignment.  Talk about what you are trying to accomplish as a software engineer to further your learning.}
+The purpose of this software was to help me learn a bit more about game development and how it is done when not using a
+dedicated game engine and more with a game framework. This helps with my learning and helps me to become a better more
+well-rounded software engineer. The software is a simple snake game programmed in Python using the Pygame-ce engine. 
+The game includes movement, a growing snake, and sound effects. The purpose of this software was to help me learn a bit
+more of Python and how it can be used to make real-world applications.
 
-{Provide a description the game that you wrote. Describe how to play your game.}
-
-{Describe your purpose for writing this software.}
-
-{Provide a link to your YouTube demonstration.  It should be a 4-5 minute demo of the game being played and a walkthrough of the code.}
-
-[Software Demo Video](http://youtube.link.goes.here)
+[Software Demo Video](https://www.youtube.com/watch?v=lE0-Pz_5ugU)
 
 # Development Environment
 
-{Describe the tools that you used to develop the software}
-
-{Describe the programming language that you used and any libraries.}
+The program was written in Python using the PyCharm IDE and made using Pygame-ce. Libraries that were used were the 
+pygame framework and the Enum library provided by the STL.
 
 # Useful Websites
 
-{Make a list of websites that you found helpful in this project}
-* [Web Site Name](http://url.link.goes.here)
-* [Web Site Name](http://url.link.goes.here)
+* [Pygame-ce Documentation](https://pyga.me/docs/)
+* [Learn Python](https://www.learnpython.org/)
 
 # Future Work
 
-{Make a list of things that you need to fix, improve, and add in the future.}
-* Item 1
-* Item 2
-* Item 3
+* Add a way to restart the game within the game
+* Add a highscore board
+* Add detection for when the player fills up the whole screen

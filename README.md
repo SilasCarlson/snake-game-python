@@ -13,6 +13,10 @@ more of Python and how it can be used to make real-world applications.
 The program was written in Python using the PyCharm IDE and made using Pygame-ce. Libraries that were used were the 
 pygame framework and the Enum library provided by the STL.
 
+# AI Disclosure
+
+No use of AI was used during the development of this project.
+
 # Useful Websites
 
 * [Pygame-ce Documentation](https://pyga.me/docs/)

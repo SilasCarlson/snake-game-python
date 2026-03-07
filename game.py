@@ -23,6 +23,10 @@ class Game:
         self._state = GameState.GAME
         self._movement_stack = [pygame.Vector2(self._last_movement_x, self._last_movement_y)]
 
+        self._move_sound = pygame.mixer.Sound("sounds/move.wav")
+        self._game_over_sound = pygame.mixer.Sound("sounds/game_over.mp3")
+        self._food_sound = pygame.mixer.Sound("sounds/food.mp3")
+
         pygame.display.set_caption("Snake Game")
 
         pygame.time.set_timer(self._move_event, 100)
@@ -58,6 +62,12 @@ class Game:
 
         return new_board_position, new_position
 
+    def get_random_position(self):
+        board_position = pygame.Vector2(random.randrange(0, self._board_width), random.randrange(0, self._board_height))
+        position = self.get_position_from_board(board_position)
+
+        return board_position, position
+
     def start(self):
         self._is_running = True
 
@@ -82,6 +92,7 @@ class Game:
                         self._last_movement_x = movement_x
                         self._last_movement_y = movement_y
                         self._movement_stack.append(pygame.Vector2(self._last_movement_x, self._last_movement_y))
+                        self._move_sound.play()
 
                 elif event.type == self._move_event and self._state == GameState.GAME:
                     new_board_position, new_position = self.get_new_player_position()
@@ -101,6 +112,7 @@ class Game:
 
                     if new_board_position.x < 0 or new_board_position.x >= self._board_width or new_board_position.y < 0 or new_board_position.y >= self._board_height or ran_into_self:
                         self._state = GameState.LOSE
+                        self._game_over_sound.play()
                     else:
                         # Get the food position
                         food_board_position = self._food.get_board_position()
@@ -108,14 +120,20 @@ class Game:
 
                         # If the player is touching the food then move the food to a random position on the board
                         if grow:
-                            new_food_board_position = pygame.Vector2(random.randrange(0, self._board_width),
-                                                                     random.randrange(0, self._board_height))
-                            new_food_position = self.get_position_from_board(new_food_board_position)
+                            new_food_board_position, new_food_position = self.get_random_position()
+
+                            # Ensure that the food is not ontop of the player
+
+                            for body_part in self._player.get_body_parts():
+                                while new_food_board_position == body_part.get_board_position():
+                                    new_food_board_position, new_food_position = self.get_random_position()
 
                             self._food.set_board_position(new_food_board_position)
                             self._food.set_position(new_food_position)
 
                             self._score += 1
+
+                            self._food_sound.play()
 
                         self._player.move(new_board_position, new_position, grow)
 

@@ -6,7 +6,7 @@ well-rounded software engineer. The software is a simple snake game programmed i
 The game includes movement, a growing snake, and sound effects. The purpose of this software was to help me learn a bit
 more of Python and how it can be used to make real-world applications.
 
-[Software Demo Video](https://www.youtube.com/watch?v=lE0-Pz_5ugU)
+[Software Demo Video](https://www.youtube.com/watch?v=BNMfcwiKBEI)
 
 # Development Environment
 
